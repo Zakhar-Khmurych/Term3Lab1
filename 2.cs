@@ -11,6 +11,7 @@ namespace attempt1
         {
             string inputstuff = "2+43*0-1";
             Console.WriteLine("Please insert your numbers. '+', '-', '*', '/', '^', '(', ')' are allowed");
+            //inputstuff = Console.ReadLine();
             Console.WriteLine(inputstuff);
             
             Stack tokens = new Stack();
@@ -18,16 +19,21 @@ namespace attempt1
             Queue<string> stuff = new Queue<string>();
 
             
-           
+            
             for (int i=0; i < inputstuff.Length; i++)
             {
+                //stuff.Enqueue(inputstuff);
+                //Console.WriteLine(inputstuff[i]);
 
-                if (true) //перевірити, чи inputstuff[i] є числом
+                if (Char.IsDigit(inputstuff[i])) //перевірити, чи inputstuff[i] є числом
                 {
                     Console.WriteLine(inputstuff[i]);
                     stuff.Enqueue(inputstuff);
                 }
-                
+                else
+                {
+                    Console.WriteLine(stuff.Dequeue());
+                }
                 tokens.Push(inputstuff[i]);
             }
 
@@ -39,6 +45,7 @@ namespace attempt1
             }
             
             PrintValues( tokens );
+            PrintValues( stuff );
             
         }
     }
