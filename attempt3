@@ -1,0 +1,54 @@
+using System;
+using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+
+namespace attempt2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string expression = "2+43*0-(1-1)";
+
+            float result;
+            Console.WriteLine("Please insert your numbers. '+', '-', '*', '/', '^', '(', ')' are allowed");
+
+            Console.WriteLine(expression);
+            //Stack LIFO = new Stack();
+
+            //Queue<char> FIFO = new Queue<char>();
+            Queue<char> numbers_q = new Queue<char>();
+            Queue<char> operators_q = new Queue<char>();
+            
+            for (int i=0; i < expression.Length; i++)
+            {
+                
+                if (Char.IsDigit(expression[i])) 
+                {
+                    Console.WriteLine(expression[i]);
+                    numbers_q.Enqueue(expression[i]);
+                    
+                }
+                else
+                {
+                    Console.WriteLine(expression[i]);
+                    operators_q.Enqueue(expression[i]);
+                }
+
+            }
+            
+            
+            static void PrintValues( IEnumerable myCollection )  {
+                foreach ( Object obj in myCollection )
+                    Console.Write( obj );
+                Console.WriteLine();
+            }
+            Console.WriteLine("#######################################");
+            PrintValues( operators_q );
+            PrintValues( numbers_q );
+            
+        }
+    }
+}
