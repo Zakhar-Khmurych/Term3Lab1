@@ -1,0 +1,67 @@
+private int[] array;
+
+private int tailPointer = 0;
+
+public void Insert(int index, int element)
+{
+    if (tailPointer >= array.Length){
+        var extendedArray = new int[array.length * 2]
+        for (var i = 0; i< array.length; i++)
+        {
+            extendedArray[i] = array[i];
+        }
+        array = extendedArray;
+    }
+
+    for (var i = tailPointer; i > index; i--){
+        array[i] = array[i-1];
+    }
+
+    array[index] = element;
+    tailPointer += 1;
+}
+
+public void Push(int element)
+{
+    Insert(tailPointer, element)
+}
+
+public void Remove(int element)
+{
+    var index = -1;
+    for (var i = 0; i < array.Length; i++)
+    {
+        if (element == array[i]){
+            index = i
+            break
+        }
+        if (index == -1){
+            return;
+        }
+        for (var i = index; i < array.Length - 1; i++){
+            array[i] = array[i + 1]
+        }
+        tailPointer -= 1
+    }
+}
+
+public void Pop(){
+    var lastElement = array[tailPointer - 1];
+    array[tailPointer - 1] = 0;
+    tailPointer -= 1;
+    return lastElement;
+}
+
+public void GetAt(int index){
+    return array[index]
+}
+
+public void IndexOf(int element){
+    var index = -1;
+    for (var i = 0; i < array.Length; i++)
+    {
+        if (element == array[i]){
+            return index
+        }
+    }
+    
