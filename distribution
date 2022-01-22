@@ -1,0 +1,28 @@
+using System;
+using System.Collections;
+
+string example = Console.ReadLine();
+Stack stackWithNums = new Stack();
+Stack stackWithOperators = new Stack();
+string result = "";
+foreach (var element in example)
+{
+    if (element == ' ')
+    {
+        if (stackWithNums.Count != 0)
+        {
+            foreach (string num in stackWithNums)
+            {
+                result += num;
+            }
+        }
+        continue;
+    }
+
+    if (Char.IsDigit(element))
+    {
+        stackWithNums.Push((int)element);
+        continue;
+    }
+    stackWithOperators.Push(element);
+}
