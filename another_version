@@ -1,0 +1,74 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+// 2+43*0+(1-1)+3
+
+List<string> Tokenize(string expression)
+{
+    var result = new List<string>();
+    
+    string strWithNums = "";
+    
+    foreach (char element in expression)
+    {
+        if (element.ToString() == " ")
+        {
+            continue;
+        }
+
+        if (Char.IsDigit(element))
+        {
+            strWithNums += element;
+            continue;
+        }
+
+        if (strWithNums.Length > 0)
+        {
+            result.Add(strWithNums);
+            strWithNums = "";
+        }
+    
+        result.Add(Convert.ToString(element));
+    
+        if (expression.IndexOf(element) == expression.Length - 1)
+        {
+            result.Add(strWithNums);
+        }
+    }
+
+    result.ForEach(Console.WriteLine);
+    return result;
+}
+
+
+List<string> InfixToPostfix(List<string> listOfStr)
+{
+    Stack outputRes = new Stack();
+    Stack operators = new Stack();
+    var result = new List<string>();
+    foreach (var element in listOfStr)
+    {
+        if (element == "-" | element == "+" | element == "*" | element == "/")
+        {
+            if (operators.Count > 0)
+            {
+                char prevoperator = Convert.ToChar(operators.Peek());
+                if ((element == "*" | element == "/") & (prevoperator == '-' | prevoperator == '+'))
+                {
+                    outputRes.Push(element);
+                    outputRes.Push(prevoperator);
+                }
+            }
+            operators.Push(element);
+        }
+        outputRes.Push(element);
+    }
+    
+    return result;
+}
+
+
+var tokened = Tokenize("2+43*0+(1-1)+3");
+var postfixed = InfixToPostfix(tokened);
+
