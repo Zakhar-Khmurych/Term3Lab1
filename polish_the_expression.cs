@@ -7,10 +7,7 @@ namespace attempt3
     {
         static void Main(string[] args)
         {
-            string epression = "2+43*0+(1-1)+3";
-            //string epression = "2 + 43 * 0 + ( 1 - 1 ) + 3";
-
-           // string epression = fromconsole;
+            string epression = Console.ReadLine();  
             Console.WriteLine(epression);      
             
             static string Algorythm(string input){
@@ -23,10 +20,8 @@ namespace attempt3
                 for (int i = 0; i < input.Length; i++)
                 { 
                     if (Char.IsDigit(input[i]) || (input[i] == Convert.ToChar("-") && i == 0) ||(i > 0 && input[i - 1] == Convert.ToChar("(") && input[i] == Convert.ToChar("-")))
-                    //if (Char.IsDigit(input[i]))
                     {
                         if (i + 1 == input.Length || Char.IsDigit(input[i+1]) || !Char.IsDigit(input[i]) || input[i + 1] == Convert.ToChar("(") || input[i + 1] == Convert.ToChar(")"))
-                        //if (Char.IsDigit(input[i+1]))
                         {
                             result += input[i] + "";
                         }
