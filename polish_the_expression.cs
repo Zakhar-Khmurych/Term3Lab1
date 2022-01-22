@@ -1,10 +1,5 @@
 using System;
 using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
-using System.Net.Mail;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 
 namespace attempt3
 {
@@ -15,11 +10,8 @@ namespace attempt3
             string epression = "2+43*0+(1-1)+3";
             //string epression = "2 + 43 * 0 + ( 1 - 1 ) + 3";
 
-            
-
            // string epression = fromconsole;
-            Console.WriteLine(epression);
-            
+            Console.WriteLine(epression);      
             
             static string Algorythm(string input){
                 string result = "";
@@ -83,7 +75,6 @@ namespace attempt3
                 return result;
             }
             
-
             static char Prio(char ch)
             {
                 switch(ch)
@@ -99,14 +90,7 @@ namespace attempt3
                 }
                 return Convert.ToChar("0");
             }
-            
             Console.WriteLine(Algorythm(epression));
-
         }
-    }
-    
-    
+    }   
 }
-
-
-
